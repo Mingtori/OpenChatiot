@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "233743303586",
+    "firebase_url": "https://openchat-a233e.firebaseio.com",
+    "project_id": "openchat-a233e",
+    "storage_bucket": "openchat-a233e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233743303586:android:64178daa8d94921d",
+        "android_client_info": {
+          "package_name": "com.iot.openchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233743303586-oqq99jlfn3p4mcc8vevu48lef36ck85c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iot.openchat",
+            "certificate_hash": "226b92963d925043028eda83fcf18d09ed9e00af"
+          }
+        },
+        {
+          "client_id": "233743303586-fv8co0t8jevuv710s0j06877h0089882.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iot.openchat",
+            "certificate_hash": "193340f064bda26c710fc23cf525a24446878afc"
+          }
+        },
+        {
+          "client_id": "233743303586-n5685cad800mjvu66duvngr06b1it2mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeLEHqJZgVtLqBe8QZrSh44gc5fT32y68"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233743303586-n5685cad800mjvu66duvngr06b1it2mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233743303586:android:f9c5144b6f768b8d",
+        "android_client_info": {
+          "package_name": "com.min.openchatiot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233743303586-ad5p2lojitcph8abcec8558vieog3ro2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.min.openchatiot",
+            "certificate_hash": "226b92963d925043028eda83fcf18d09ed9e00af"
+          }
+        },
+        {
+          "client_id": "233743303586-n5685cad800mjvu66duvngr06b1it2mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeLEHqJZgVtLqBe8QZrSh44gc5fT32y68"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233743303586-n5685cad800mjvu66duvngr06b1it2mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
