@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
-
+    private String roomName;
     private FirebaseAuth firebaseAuth;
 
     private String id;
@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        roomName = intent.getStringExtra("chatroom");
+
         //키보드 show, hide 기능에 필요한 객체 생성
         manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
@@ -57,19 +60,21 @@ public class MainActivity extends AppCompatActivity{
         reference = FirebaseDatabase.getInstance().getReference();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        textViewId = (TextView) findViewById(R.id.textView_id);
-        editText = (EditText) findViewById(R.id.editText_message);
-        layoutEdit = (LinearLayout) findViewById(R.id.layout_edit);
+        textViewId = findViewById(R.id.textView_id);
+        editText = findViewById(R.id.editText_message);
+        layoutEdit =  findViewById(R.id.layout_edit);
 
 
         id = firebaseUser.getEmail().split("@")[0];
         textViewId.setText(id);
 
         //채팅 현형 리스트 구현
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         adapter = new MessageAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+
 
         findViewById(R.id.button_logout).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,18 +97,18 @@ public class MainActivity extends AppCompatActivity{
                 firebase 데이터베이스 내의 chat 테이블에 Message 데이터클래스 자체를 삽입
                 이럴 경우 나중에 데이터를 가져올 때 class자체로 다시 가져올 수 있어 관리가 용이
                  */
-                Message message = new Message(id, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), new SimpleDateFormat("HH:mm").format(new Date()));
+                Message message = new Message(id, new SimpleDateFormat("yyyy-MM-dd").format(new Date()), new SimpleDateFormat("ahh:mm").format(new Date()));
                 message.setText(editText.getText().toString());
 
                 //firebase 데이터베이스 내부 chat 테이블로 데이터 전송
-                reference.child("chat").push().setValue(message);
+                reference.child(roomName).child("chat").push().setValue(message);
                 editText.setText("");
             }
         });
 
 
         //chat이라는 테이블 내에 데이터에 대한 리스너
-        reference.child("chat").addChildEventListener(new ChildEventListener() {
+        reference.child(roomName).child("chat").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /*

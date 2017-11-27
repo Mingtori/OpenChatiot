@@ -20,6 +20,7 @@
             android:id="@+id/textView_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#fffd00"
             android:textColor="@android:color/black"
             android:maxWidth="250dp"
             android:paddingLeft="6dp"
@@ -29,8 +30,11 @@
 
         <TextView
             android:id="@+id/textView_time"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:gravity="bottom"
+
             android:text="10:23"
             android:textColor="@android:color/black"
             android:layout_centerVertical="true"

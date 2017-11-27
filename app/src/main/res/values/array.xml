@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="item_area">
+        <item>선택하시오.</item>
+        <item>서울</item>
+        <item>인천</item>
+        <item>경기도</item>
+        <item>충청도</item>
+        <item>기타</item>
+    </string-array>
+</resources>

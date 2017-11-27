@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        editTextId = (EditText) findViewById(R.id.editText_id);
+        editTextId = findViewById(R.id.editText_id);
 
         //firebase 사용자 관련 처리를 위한 객체 생성
         firebaseAuth = FirebaseAuth.getInstance();
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
          */
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser != null) {
-            startChatRoom();
+            startArea();
         }
 
         findViewById(R.id.button_check).setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                startChatRoom();
+                                startArea();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -111,10 +111,15 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "회원가입 실패", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            startChatRoom();
+                            startArea();
                         }
                     }
                 });
+    }
+
+    private void startArea() {
+        startActivity(new Intent(this, AreaActivity.class));
+        LoginActivity.this.finish();
     }
 
     private void startChatRoom() {
