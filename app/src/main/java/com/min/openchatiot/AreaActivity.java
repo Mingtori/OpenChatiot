@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 public class AreaActivity extends AppCompatActivity {
-    private ArrayAdapter areaAdapter;
-    private String roomName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

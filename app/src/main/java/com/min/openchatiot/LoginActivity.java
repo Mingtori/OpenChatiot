@@ -121,9 +121,4 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, AreaActivity.class));
         LoginActivity.this.finish();
     }
-
-    private void startChatRoom() {
-        startActivity(new Intent(this, MainActivity.class));
-        LoginActivity.this.finish();
-    }
 }

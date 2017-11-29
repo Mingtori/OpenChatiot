@@ -11,7 +11,7 @@ import android.widget.TextView;
 public interface MessageViewHolder {
 
     //text관련 view 클래스
-    public class TextItemHolder extends RecyclerView.ViewHolder{
+    class TextItemHolder extends RecyclerView.ViewHolder{
 
         public TextView textViewId;
         public TextView textViewMessage;
@@ -20,9 +20,9 @@ public interface MessageViewHolder {
         public TextItemHolder(View itemView) {
             super(itemView);
 
-            textViewId = (TextView) itemView.findViewById(R.id.textView_id);
-            textViewMessage = (TextView) itemView.findViewById(R.id.textView_message);
-            textViewTime = (TextView) itemView.findViewById(R.id.textView_time);
+            textViewId = itemView.findViewById(R.id.textView_id);
+            textViewMessage = itemView.findViewById(R.id.textView_message);
+            textViewTime = itemView.findViewById(R.id.textView_time);
         }
     }
 }

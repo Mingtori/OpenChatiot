@@ -2,17 +2,11 @@ package com.min.openchatiot;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,21 +21,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
-    private String roomName;
-    private FirebaseAuth firebaseAuth;
-
-    private String id;
+    private String roomName;    // 지역 채널 변수
+    private FirebaseAuth firebaseAuth;  // 사용자 로그인 정보
+    private String id;  // 사용자 아이디
     private TextView textViewId;
-
     private DatabaseReference reference;
-
     private EditText editText;
-    private LinearLayout layoutEdit;
-
     private RecyclerView recyclerView;
     private MessageAdapter adapter;
-
-    private InputMethodManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +38,16 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = getIntent();
         roomName = intent.getStringExtra("chatroom");
 
-        //키보드 show, hide 기능에 필요한 객체 생성
-        manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-
-
         //firebase 사용자 정보 및 데이터베이스 사용을 위한 객체 생성
         firebaseAuth = FirebaseAuth.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference();
+        reference = FirebaseDatabase.getInstance().getReference().child(roomName);
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         textViewId = findViewById(R.id.textView_id);
         editText = findViewById(R.id.editText_message);
-        layoutEdit =  findViewById(R.id.layout_edit);
-
 
         id = firebaseUser.getEmail().split("@")[0];
-        textViewId.setText(id);
+        textViewId.setText(roomName + "채널");
 
         //채팅 현형 리스트 구현
         recyclerView = findViewById(R.id.recyclerView);
@@ -101,14 +82,14 @@ public class MainActivity extends AppCompatActivity{
                 message.setText(editText.getText().toString());
 
                 //firebase 데이터베이스 내부 chat 테이블로 데이터 전송
-                reference.child(roomName).child("chat").push().setValue(message);
+                reference.child("chat").push().setValue(message);
                 editText.setText("");
             }
         });
 
 
         //chat이라는 테이블 내에 데이터에 대한 리스너
-        reference.child(roomName).child("chat").addChildEventListener(new ChildEventListener() {
+        reference.child("chat").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /*
