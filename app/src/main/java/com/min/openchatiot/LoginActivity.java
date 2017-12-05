@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                  * public Task<AuthResult> signInWithEmailAndPassword(String email, String password)
                  * 주어진 이메일 주소와 비밀번호로 사용자 로그인을 시도함
                  */
-                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
+                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@openchatiot.com", "openchatiot")
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 /*
                 firebase 로그인 처리 (중복 체크와 동일한 코드)
                  */
-                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
+                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@openchatiot.com", "openchatiot")
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         firebase 회원가입은 처리와 동시에 로그인 상태가 되기 때문에
         정상적으로 회원가입이 되었을 경우 바로 채팅화면을 표시
          */
-        firebaseAuth.createUserWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
+        firebaseAuth.createUserWithEmailAndPassword(editTextId.getText().toString() + "@openchatiot.com", "openchatiot")
                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

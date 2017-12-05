@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity{
         adapter = new MessageAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
-
-
+        
         findViewById(R.id.button_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +71,6 @@ public class MainActivity extends AppCompatActivity{
         findViewById(R.id.button_send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 /*
                 firebase 데이터베이스 내의 chat 테이블에 Message 데이터클래스 자체를 삽입
                 이럴 경우 나중에 데이터를 가져올 때 class자체로 다시 가져올 수 있어 관리가 용이

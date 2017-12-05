@@ -46,8 +46,8 @@
         <LinearLayout
             android:id="@+id/layout_edit"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="32dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/editText_message"
@@ -66,8 +66,7 @@
                 android:layout_weight="1"
                 android:text="전송"
                 android:adjustViewBounds="true"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="8dp"/>
+                />
 
         </LinearLayout>
 
