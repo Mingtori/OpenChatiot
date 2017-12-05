@@ -29,11 +29,22 @@ public class LoginActivity extends AppCompatActivity {
         editTextId = findViewById(R.id.editText_id);
 
         //firebase 사용자 관련 처리를 위한 객체 생성
+
+        /**
+         * public static FirebaseAuth getInstance()
+         * FirebaseApp 인스턴스를 받아옴
+         */
         firebaseAuth = FirebaseAuth.getInstance();
 
         /*
         이미 로그인된 사용자가 있는 경우
         로그인 화면을 종료하고 채팅 화면을 표시
+         */
+
+        /**
+         * public FirebaseUser getCurrentUser()
+         * 현재 로그인 되어 FirebaseUser에 있지 않은 경우 null 반환
+         * 있으면 로그인 한 사용자 정보
          */
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser != null) {
@@ -47,7 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                 이미 계정이있다는 얘기이므로 다시 로그아웃 처리와 함께 계정이 있다는 문구 표시
                 로그인이 불가능하다면 아직 계정정보가 없기 떄문에 정상적으로 사용가능하다는 문구 표시
                  */
-                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@emoticon.com", "emoticon")
+
+                /**
+                 * public Task<AuthResult> signInWithEmailAndPassword(String email, String password)
+                 * 주어진 이메일 주소와 비밀번호로 사용자 로그인을 시도함
+                 */
+                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -73,11 +89,10 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.button_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 /*
                 firebase 로그인 처리 (중복 체크와 동일한 코드)
                  */
-                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@openchatiot.com", "emoticon")
+                firebaseAuth.signInWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -103,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         firebase 회원가입은 처리와 동시에 로그인 상태가 되기 때문에
         정상적으로 회원가입이 되었을 경우 바로 채팅화면을 표시
          */
-        firebaseAuth.createUserWithEmailAndPassword(editTextId.getText().toString() + "@emoticon.com", "emoticon")
+        firebaseAuth.createUserWithEmailAndPassword(editTextId.getText().toString() + "@iot.com", "iot")
                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
