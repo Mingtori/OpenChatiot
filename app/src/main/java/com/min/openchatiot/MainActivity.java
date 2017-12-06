@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity{
         adapter = new MessageAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        
+
         findViewById(R.id.button_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,14 +79,14 @@ public class MainActivity extends AppCompatActivity{
                 message.setText(editText.getText().toString());
 
                 //firebase 데이터베이스 내부 chat 테이블로 데이터 전송
-                reference.child("chat").push().setValue(message);
+                reference.push().setValue(message);
                 editText.setText("");
             }
         });
 
 
-        //chat이라는 테이블 내에 데이터에 대한 리스너
-        reference.child("chat").addChildEventListener(new ChildEventListener() {
+        // 테이블 내에 데이터에 대한 리스너
+        reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /*
